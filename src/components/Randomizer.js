@@ -26,8 +26,8 @@ function Randomizer() {
             return {
                 name: player,
                 dwarf: dwarf.name,
-                primary: pickOne(dwarf.primaries),
-                secondary: pickOne(dwarf.secondaries),
+                primary: pickOne(dwarf.primaries).name,
+                secondary: pickOne(dwarf.secondaries).name,
                 grenade: pickOne(dwarf.grenades)
             }
         })
