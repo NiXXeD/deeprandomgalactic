@@ -13,14 +13,13 @@ function AppTabs() {
 
     return (
         <React.Fragment>
-            <AppBar position='static' elevation={0} className={classes.bgColor}>
+            <AppBar position='static' elevation={0} className={classes.appBar}>
                 <Tabs
                     value={tab}
                     onChange={handleTabChange}
-                    variant='fullWidth'
                 >
-                    <Tab label='Randomizer' className={classes.bgColor}/>
-                    <Tab label='Setup' className={classes.bgColor}/>
+                    <Tab label='Randomizer' className={classes.tab}/>
+                    <Tab label='Setup' className={classes.tab}/>
                 </Tabs>
             </AppBar>
             <div className={tab !== 0 ? classes.invisible : ''}>
@@ -34,8 +33,12 @@ function AppTabs() {
 }
 
 const useStyles = makeStyles(theme => ({
-    bgColor: {
+    appBar: {
         backgroundColor: theme.palette.background.paper
+    },
+    tab: {
+        backgroundColor: theme.palette.background.paper,
+        minWidth: 125
     },
     invisible: {
         display: 'none'

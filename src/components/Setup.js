@@ -23,7 +23,8 @@ function Setup() {
 
 const useStyles = makeStyles({
     card: {
-        margin: 16
+        margin: 16,
+        maxWidth: 400
     }
 })
 

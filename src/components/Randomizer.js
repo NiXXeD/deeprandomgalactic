@@ -32,7 +32,6 @@ function Randomizer() {
             }
         })
         setData(randomized)
-        console.log(randomized)
     }, [])
 
     return (
@@ -80,7 +79,8 @@ const pickOne = arr => {
 
 const useStyles = makeStyles({
     card: {
-        margin: 16
+        margin: 16,
+        maxWidth: 400
     },
     content: {
         marginTop: -16,
