@@ -1,5 +1,5 @@
+import React, {useCallback, useContext, useState} from 'react'
 import {Divider} from '@material-ui/core'
-import React, {useCallback, useState} from 'react'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import makeStyles from '@material-ui/styles/makeStyles'
@@ -11,10 +11,14 @@ import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import dwarves from '../data/dwarves'
 import LabelValueDisplay from './LabelValueDisplay'
+import SettingsContext from './SettingsContext'
 
 function Randomizer() {
     const classes = useStyles()
     const [data, setData] = useState(null)
+    const {settings} = useContext(SettingsContext)
+    const {player1, player2, player3, player4, balancedTeam, randomGuns, randomGrenades, randomOverclocks} = settings
+    const players = [player1, player2, player3, player4].filter(p => p)
 
     const handleClear = useCallback(() => {
         setData(null)
@@ -24,17 +28,21 @@ function Randomizer() {
         const dwarfClone = [...dwarves]
         const randomized = players.map(player => {
             const dwarf = pickOne(dwarfClone, balancedTeam)
+            const primary = pickOne(dwarf.primaries)
+            const secondary = pickOne(dwarf.secondaries)
             return {
                 name: player,
                 color: dwarf.color,
                 dwarf: dwarf.name,
-                primary: pickOne(dwarf.primaries).name,
-                secondary: pickOne(dwarf.secondaries).name,
+                primary: primary.name,
+                primaryOverclock: pickOne(primary.overclocks),
+                secondary: secondary.name,
+                secondaryOverclock: pickOne(secondary.overclocks),
                 grenade: pickOne(dwarf.grenades)
             }
         })
         setData(randomized)
-    }, [])
+    }, [balancedTeam, players])
 
     return (
         <Card className={classes.card}>
@@ -47,15 +55,41 @@ function Randomizer() {
                         <React.Fragment key={index}>
                             <div className={classes.row}>
                                 <LabelValueDisplay label='Player' value={player.name}/>
-                                <LabelValueDisplay label='Dwarf' value={player.dwarf} valueStyle={{color: player.color}}/>
+                                <LabelValueDisplay
+                                    label='Dwarf'
+                                    value={player.dwarf}
+                                    valueStyle={{color: player.color}}
+                                />
                             </div>
-                            <div className={classes.row}>
-                                <LabelValueDisplay label='Primary' value={player.primary}/>
-                                <LabelValueDisplay label='Secondary' value={player.secondary}/>
-                            </div>
-                            <div className={classes.row}>
+                            {
+                                randomGuns &&
+                                <div className={classes.row}>
+                                    <LabelValueDisplay label='Primary'>
+                                        {player.primary}
+                                        {
+                                            randomOverclocks &&
+                                            <React.Fragment>
+                                                <br/>
+                                                {player.primaryOverclock}
+                                            </React.Fragment>
+                                        }
+                                    </LabelValueDisplay>
+                                    <LabelValueDisplay label='Secondary'>
+                                        {player.secondary}
+                                        {
+                                            randomOverclocks &&
+                                            <React.Fragment>
+                                                <br/>
+                                                {player.secondaryOverclock}
+                                            </React.Fragment>
+                                        }
+                                    </LabelValueDisplay>
+                                </div>
+                            }
+                            {
+                                randomGrenades &&
                                 <LabelValueDisplay label='Grenade' value={player.grenade}/>
-                            </div>
+                            }
                             {index < players.length - 1 && <Divider className={classes.divider}/>}
                         </React.Fragment>
                     )
@@ -73,8 +107,6 @@ function Randomizer() {
     )
 }
 
-const balancedTeam = true
-const players = ['One', 'Two', 'Three', 'Four']
 const pickOne = (arr, pluck) => {
     const max = arr.length
     const index = Math.floor((Math.random() * max) % max)
@@ -86,7 +118,7 @@ const pickOne = (arr, pluck) => {
 const useStyles = makeStyles({
     card: {
         margin: 16,
-        maxWidth: 400
+        maxWidth: 450
     },
     content: {
         marginTop: -16,
