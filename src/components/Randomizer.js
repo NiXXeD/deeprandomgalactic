@@ -21,8 +21,9 @@ function Randomizer() {
     }, [])
 
     const handleRandomize = useCallback(() => {
+        const dwarfClone = [...dwarves]
         const randomized = players.map(player => {
-            const dwarf = pickOne(dwarves)
+            const dwarf = pickOne(dwarfClone, balancedTeam)
             return {
                 name: player,
                 dwarf: dwarf.name,
@@ -71,10 +72,14 @@ function Randomizer() {
     )
 }
 
+const balancedTeam = true
 const players = ['One', 'Two', 'Three', 'Four']
-const pickOne = arr => {
-    const index = Math.floor((Math.random() * 100) % arr.length)
-    return arr[index]
+const pickOne = (arr, pluck) => {
+    const max = arr.length
+    const index = Math.floor((Math.random() * max) % max)
+    const item = arr[index]
+    if (pluck) arr.splice(index, 1)
+    return item
 }
 
 const useStyles = makeStyles({
