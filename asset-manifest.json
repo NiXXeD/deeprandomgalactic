@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/deeprandomgalactic/static/css/main.1a4f9d96.chunk.css",
-    "main.js": "/deeprandomgalactic/static/js/main.b3a265f2.chunk.js",
-    "main.js.map": "/deeprandomgalactic/static/js/main.b3a265f2.chunk.js.map",
+    "main.js": "/deeprandomgalactic/static/js/main.bd4e2fac.chunk.js",
+    "main.js.map": "/deeprandomgalactic/static/js/main.bd4e2fac.chunk.js.map",
     "runtime-main.js": "/deeprandomgalactic/static/js/runtime-main.4bca9160.js",
     "runtime-main.js.map": "/deeprandomgalactic/static/js/runtime-main.4bca9160.js.map",
-    "static/js/2.85ce159b.chunk.js": "/deeprandomgalactic/static/js/2.85ce159b.chunk.js",
-    "static/js/2.85ce159b.chunk.js.map": "/deeprandomgalactic/static/js/2.85ce159b.chunk.js.map",
+    "static/js/2.2a781a96.chunk.js": "/deeprandomgalactic/static/js/2.2a781a96.chunk.js",
+    "static/js/2.2a781a96.chunk.js.map": "/deeprandomgalactic/static/js/2.2a781a96.chunk.js.map",
     "index.html": "/deeprandomgalactic/index.html",
     "static/css/main.1a4f9d96.chunk.css.map": "/deeprandomgalactic/static/css/main.1a4f9d96.chunk.css.map",
-    "static/js/2.85ce159b.chunk.js.LICENSE.txt": "/deeprandomgalactic/static/js/2.85ce159b.chunk.js.LICENSE.txt",
+    "static/js/2.2a781a96.chunk.js.LICENSE.txt": "/deeprandomgalactic/static/js/2.2a781a96.chunk.js.LICENSE.txt",
     "static/media/github.abfa92f7.svg": "/deeprandomgalactic/static/media/github.abfa92f7.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4bca9160.js",
-    "static/js/2.85ce159b.chunk.js",
+    "static/js/2.2a781a96.chunk.js",
     "static/css/main.1a4f9d96.chunk.css",
-    "static/js/main.b3a265f2.chunk.js"
+    "static/js/main.bd4e2fac.chunk.js"
   ]
 }
