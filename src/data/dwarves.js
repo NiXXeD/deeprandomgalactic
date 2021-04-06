@@ -1,6 +1,7 @@
 const dwarves = [
     {
         name: 'Driller',
+        color: '#dfda3a',
         primaries: [
             {
                 name: 'CRSPR Flamethrower',
@@ -57,6 +58,7 @@ const dwarves = [
     },
     {
         name: 'Engineer',
+        color: '#Fb1a17',
         primaries: [
             {
                 name: '"Warthog" Auto 210',
@@ -113,6 +115,7 @@ const dwarves = [
     },
     {
         name: 'Gunner',
+        color: '#3a6b33',
         primaries: [
             {
                 name: '"Lead Storm" Powered Minigun',
@@ -171,6 +174,7 @@ const dwarves = [
     },
     {
         name: 'Scout',
+        color: '#235bf4',
         primaries: [
             {
                 name: 'Deepcore GK2',

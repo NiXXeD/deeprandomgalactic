@@ -26,6 +26,7 @@ function Randomizer() {
             const dwarf = pickOne(dwarfClone, balancedTeam)
             return {
                 name: player,
+                color: dwarf.color,
                 dwarf: dwarf.name,
                 primary: pickOne(dwarf.primaries).name,
                 secondary: pickOne(dwarf.secondaries).name,
@@ -46,7 +47,7 @@ function Randomizer() {
                         <React.Fragment key={index}>
                             <div className={classes.row}>
                                 <LabelValueDisplay label='Player' value={player.name}/>
-                                <LabelValueDisplay label='Dwarf' value={player.dwarf}/>
+                                <LabelValueDisplay label='Dwarf' value={player.dwarf} valueStyle={{color: player.color}}/>
                             </div>
                             <div className={classes.row}>
                                 <LabelValueDisplay label='Primary' value={player.primary}/>
