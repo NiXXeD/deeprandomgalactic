@@ -122,7 +122,7 @@ const useStyles = makeStyles({
     },
     content: {
         overflowY: 'auto',
-        maxHeight: 'calc(100vh - 298px)'
+        maxHeight: 'calc(100vh - 304px)'
     },
     divider: {
         margin: '16px -16px 8px -16px'
