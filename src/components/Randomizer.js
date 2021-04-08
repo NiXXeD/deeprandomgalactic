@@ -10,6 +10,7 @@ import ClearAllIcon from '@material-ui/icons/ClearAll'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import dwarves from '../data/dwarves'
+import {activePerks, passivePerks} from '../data/perks'
 import LabelValueDisplay from './LabelValueDisplay'
 import SettingsContext from './SettingsContext'
 
@@ -17,7 +18,9 @@ function Randomizer() {
     const classes = useStyles()
     const [data, setData] = useState(null)
     const {settings} = useContext(SettingsContext)
-    const {player1, player2, player3, player4, balancedTeam, randomGuns, randomGrenades, randomOverclocks} = settings
+    const {
+        player1, player2, player3, player4, balancedTeam, randomGuns, randomGrenades, randomOverclocks, randomPerks
+    } = settings
     const players = [player1, player2, player3, player4].filter(p => p)
 
     const handleClear = useCallback(() => {
@@ -38,7 +41,9 @@ function Randomizer() {
                 primaryOverclock: pickOne(primary.overclocks),
                 secondary: secondary.name,
                 secondaryOverclock: pickOne(secondary.overclocks),
-                grenade: pickOne(dwarf.grenades)
+                grenade: pickOne(dwarf.grenades),
+                passivePerks: pickMultiple(passivePerks, 3),
+                activePerks: pickMultiple(activePerks, 2)
             }
         })
         setData(randomized)
@@ -90,6 +95,23 @@ function Randomizer() {
                                 randomGrenades &&
                                 <LabelValueDisplay label='Grenade' value={player.grenade}/>
                             }
+                            {
+                                randomPerks &&
+                                <div className={classes.row}>
+                                    <LabelValueDisplay
+                                        label='Passive Perks'
+                                        value={player.passivePerks.map(perk =>
+                                            <React.Fragment>{perk}<br/></React.Fragment>
+                                        )}
+                                    />
+                                    <LabelValueDisplay
+                                        label='Active Perks'
+                                        value={player.activePerks.map(perk =>
+                                            <React.Fragment>{perk}<br/></React.Fragment>
+                                        )}
+                                    />
+                                </div>
+                            }
                             {index < players.length - 1 && <Divider className={classes.divider}/>}
                         </React.Fragment>
                     )
@@ -113,6 +135,9 @@ const pickOne = (arr, pluck) => {
     const item = arr[index]
     if (pluck) arr.splice(index, 1)
     return item
+}
+const pickMultiple = (arr, count) => {
+    return [...Array(count)].map(() => pickOne(arr, true))
 }
 
 const useStyles = makeStyles({

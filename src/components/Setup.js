@@ -23,6 +23,7 @@ function Setup() {
                     <Checkbox name='randomGuns' label='Random Guns'/>
                     <Checkbox name='randomGrenades' label='Random Grenades'/>
                     <Checkbox name='randomOverclocks' label='Random Overclocks'/>
+                    <Checkbox name='randomPerks' label='Random Perks'/>
                 </CardContent>
             </form>
         </Card>

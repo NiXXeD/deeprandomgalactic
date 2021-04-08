@@ -36,7 +36,8 @@ const defaultValues = {
     balancedTeam: true,
     randomGuns: true,
     randomGrenades: true,
-    randomOverclocks: false
+    randomOverclocks: false,
+    randomPerks: false
 }
 const localStorageKey = 'DRnGSettings'
 
